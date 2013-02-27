@@ -34,4 +34,5 @@ make_variant_shrink_over\<boost::mpl::vector\<double,int,std::string\> \>::type
 
 
 Advanced:
+
 you can edit your prefer type oder  ordered_number_types in variant_shrink.hpp
