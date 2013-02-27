@@ -15,7 +15,7 @@
 
 `variant_shrink` is such extension
 
-* Usage:
+# Usage:
 
 `make_variant_shrink_over<boost::mpl::vector<int,int> >::type`  
 => `int` 
@@ -48,12 +48,12 @@
 `
 
 
-* Advanced:
+# Advanced:
 
-you can edit your prefer type oder  ordered_number_types in variant_shrink.hpp
+you can edit your prefer type oder  `ordered_number_types ` in `variant_shrink.hpp `  
 
 
-* license
+# license
 
 Boost license
 
