@@ -1,16 +1,17 @@
 boost variant should be
 
 variant\<int,int\>
-=> int
-
-variant\<int,boost::rational\<int\> \>
-=> boost::rational<int>
+=\> int
 
 variant\<int,double\>
-=> double
+=\> double
+
+variant\<int,boost::rational\<int\> \>
+=\> boost::rational\<int\>
+
 
 variant\<int,double,std::string\>
-=> variant\<double,std::string\>
+=\> variant\<double,std::string\>
 
 variant_shrink is such extension
 
