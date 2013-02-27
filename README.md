@@ -1,10 +1,10 @@
 boost variant should be
 
-'variant<int,int>'  
+`variant<int,int> `  
 => int
 
-`variant\<int,double\> `
-=\> double
+`variant<int,double> `  
+=> double
 
 variant\<int,boost::rational\<int\> \>
 =\> boost::rational\<int\>
