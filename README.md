@@ -1,7 +1,7 @@
 boost variant should be
 
-variant\<int,int\>
-=\> int
+`variant<int,int>'
+=> int
 
 variant\<int,double\>
 =\> double
@@ -15,7 +15,7 @@ variant\<int,double,std::string\>
 
 variant_shrink is such extension
 
-Usage:
+*Usage:
 
 make_variant_shrink_over\<boost::mpl::vector\<int,int\> \>::type
 =\> int 
@@ -33,7 +33,7 @@ make_variant_shrink_over\<boost::mpl::vector\<double,int,std::string\> \>::type
 =\> boost::variant\<double,std::string\>
 
 
-Example:
+*Example:
 
 
 template\<typename X,typename Y\>
