@@ -33,6 +33,23 @@ make_variant_shrink_over\<boost::mpl::vector\<double,int,std::string\> \>::type
 =\> boost::variant\<double,std::string\>
 
 
+Example:
+
+
+template\<typename X,typename Y\>
+
+typename make_variant_shrink_over\<boost::mpl::vector\<X,Y\> \>::type
+
+adder(X x, Y y) {return x + y;}
+
+  double r1= adder(1,1.1);
+
+
+  boost::rational\<int\> x(2,3);
+  boost::rational\<int\> r2 = adder(1,x);
+
+
+
 Advanced:
 
 you can edit your prefer type oder  ordered_number_types in variant_shrink.hpp

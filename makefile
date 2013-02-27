@@ -11,7 +11,7 @@ CFLAGS		= -Wall \
 
 OBJS		= $(SRCS:.c=.o)
 
-PROGRAM		= variant_shrink_test.exe
+PROGRAM		= variant_shrink_test.exe example.exe
 
 
 .PHONY: all
