@@ -33,7 +33,7 @@
 => `boost::variant<double,std::string>`
 
 
-* Example:
+# Example:
 
 `template<typename X,typename Y> `  
 `typename make_variant_shrink_over<boost::mpl::vector<X,Y> >::type `  
