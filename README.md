@@ -1,6 +1,6 @@
 boost variant should be
 
-variant<int,int>
+variant\<int,int\>
 => int
 
 variant<int,boost::rational<int> >
