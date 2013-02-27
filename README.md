@@ -17,19 +17,19 @@ variant_shrink is such extension
 Usage:
 
 make_variant_shrink_over\<boost::mpl::vector\<int,int\> \>::type
-=> int 
+=\> int 
 
 make_variant_shrink_over\<boost::mpl::vector\<int,boost::rational\<int\> \>::type
-=> boost::rational\<int\>
+=\> boost::rational \<int\>
 
 make_variant_shrink_over\<boost::mpl::vector\<int,double \>  \>::type
-=> double 
+=\> double 
 
 make_variant_shrink_over\<boost::mpl::vector\<double,std::string\> \>::type
-=> boost::variant\<double,std::string\>
+=\> boost::variant\<double,std::string\>
 
 make_variant_shrink_over\<boost::mpl::vector\<double,int,std::string\> \>::type
-=> boost::variant\<double,std::string\>
+=\> boost::variant\<double,std::string\>
 
 
 Advanced:
