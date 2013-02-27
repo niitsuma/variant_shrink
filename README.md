@@ -51,3 +51,11 @@
 * Advanced:
 
 you can edit your prefer type oder  ordered_number_types in variant_shrink.hpp
+
+
+* license
+
+Boost license
+
+
+© Copyright Hirotaka Niitsuma 2012-2013;
