@@ -1,16 +1,12 @@
 #include "variant_shrink.hpp"
 
 
-struct do_double : boost::static_visitor<void>
-{
-	template<typename T>
-	  void operator()( T& t ) const { t = t + t; }
-};
-
-
 int main()
 {
-  typedef make_variant_shrink_over<boost::mpl::vector<double,float,int,bool,char> >::type r1type;
+
+  typedef make_variant_shrink_over<
+    boost::mpl::vector<double,float,int,bool,char> 
+    >::type r1type;
   BOOST_MPL_ASSERT((boost::mpl::equal<r1type ,boost::variant<double,bool,char> > ));
   //BOOST_MPL_ASSERT((boost::is_same<r1type ,boost::variant<double,bool,char> > ));
   r1type val1(1.1);
@@ -46,6 +42,7 @@ int main()
   v3=false;
   std::cout << v3 << std::endl;
 
+
   typedef make_variant_shrink_over<boost::mpl::vector<int,double,double,char,char,std::string> >::type r4type;
   BOOST_MPL_ASSERT((boost::mpl::equal<r4type ,boost::variant<double,char,std::string> > )); 
   
@@ -61,7 +58,6 @@ int main()
   std::cout << v4 << std::endl;
   std::cout << v4.which() << std::endl;
 
-
   v4=4.44;
   std::cout << v4 << std::endl;
   std::cout << v4.which() << std::endl;
@@ -71,9 +67,6 @@ int main()
   // std::cout << v4.which() << std::endl;
 
   //v4=v4+v4;
-
-
-
 
 
 
@@ -131,52 +124,5 @@ int main()
 	 >  //your prefer order
      >::type r9type;
     BOOST_MPL_ASSERT((boost::is_same<r9type ,boost::rational<int> > ));
-
-
-  /////////////////////////////////////util test//////////////////////
-    BOOST_MPL_ASSERT((is_less_type_over<int,double,default_type_order>));
-  //BOOST_MPL_ASSERT((is_less_type_over<double,int,default_type_order>));
-    BOOST_MPL_ASSERT((boost::is_same<greater_type_over::apply<int,double,default_type_order>::type,double> ));
-    BOOST_MPL_ASSERT((boost::is_same<greater_type_over::apply<double,int,default_type_order>::type,double> ));
-    BOOST_MPL_ASSERT((boost::is_same<greater_type_over::apply<float,short,default_type_order>::type,float> ));
-    BOOST_MPL_ASSERT((boost::is_same<max_type_over<boost::mpl::vector<double,float,int>::type,default_type_order   >::type , double>  ));
-
-
-  typedef mpl_vector_contains_filter<  
-    boost::mpl::vector<double,float,int>
-    ,boost::mpl::vector<double,float,char>
-    >::type ct1;
-  //BOOST_MPL_ASSERT((boost::is_same<ct1,boost::mpl::vector<double,float> >));
-  BOOST_MPL_ASSERT((boost::mpl::equal< ct1 , boost::mpl::vector<double,float> >));
-
-  typedef mpl_vector_not_contains_filter<  
-    boost::mpl::vector<double,float,int,char>
-    ,boost::mpl::vector<double,float>
-    >::type cnt1;
-  BOOST_MPL_ASSERT((boost::mpl::equal< cnt1 , boost::mpl::vector<int,char> >));
-
-
-
-
-   
-  boost::variant<int,double,std::string> v;
-       boost::get<int>(v);
-       //boost::get<bool>(v);
-  
-
-
-        v = -2;
-	assert( v.which() == 0 );           
-        std::cout << boost::get<int>(v) <<  std::endl; 
-
-	v = 3.14;
-	assert( v.which() == 1 ); 
-	 std::cout << v <<  std::endl;        
-
-	v = "hoge";
-	assert( v.which() == 2 );        
-	//apply_visitor( do_double(), v ); 
-	std::cout << v <<  std::endl;
-
 
 }
