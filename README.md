@@ -35,16 +35,16 @@
 
 # Example:
 
-    template<typename X,typename Y> `  
-    typename make_variant_shrink_over<boost::mpl::vector<X,Y> >::type `  
-    adder(X x, Y y) {return x + y;} `  
+    template<typename X,typename Y> 
+    typename make_variant_shrink_over<boost::mpl::vector<X,Y> >::type 
+    adder(X x, Y y) {return x + y;} 
     
     
-    double r1= adder(1,1.1); `  
+    double r1= adder(1,1.1); 
     
     
-    boost::rational<int> x(2,3); `  
-    boost::rational<int> r2 = adder(1,x); `  
+    boost::rational<int> x(2,3); 
+    boost::rational<int> r2 = adder(1,x); 
 
 
 

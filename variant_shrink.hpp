@@ -60,7 +60,7 @@
   {};
 
   template<typename TypeVec>
-  struct variant_shrink_after_unique_concatenate_and_max_vector : public 
+  struct make_variant_concatenate_and_max_vector_over : public 
   boost::mpl::copy<
     typename not_number_type_filter_mpl_lambda::apply<TypeVec>::type
     ,typename boost::mpl::back_inserter< 
@@ -74,27 +74,27 @@
   {};
 
   template<typename TypeVec>
-  struct variant_shrink_after_unique_not_empty_number : public 
+  struct make_variant_shrink_without_unique_over_not_empty_number : public 
   boost::mpl::if_<  
     boost::mpl::empty<
       typename not_number_type_filter_mpl_lambda::apply<TypeVec>::type 
       >//::type
     ,typename max_number_type<TypeVec>::type
     ,typename boost::make_variant_over<
-       typename variant_shrink_after_unique_concatenate_and_max_vector<TypeVec>::type
+       typename make_variant_concatenate_and_max_vector_over<TypeVec>::type
        >::type
     >
   {};
 
 
   template<typename TypeVec>
-  struct variant_shrink_after_unique : public 
+  struct make_variant_shrink_without_unique_over : public 
   boost::mpl::if_<
     boost::mpl::empty<
       typename number_type_filter_mpl_lambda::apply<TypeVec>::type 
       > //::type
     ,typename boost::make_variant_over<TypeVec>
-    ,variant_shrink_after_unique_not_empty_number<TypeVec>
+    ,make_variant_shrink_without_unique_over_not_empty_number<TypeVec>
     >
   {};
 
@@ -103,7 +103,7 @@
   //variant_shrink 
   make_variant_shrink_over
     : public 
-  variant_shrink_after_unique<
+  make_variant_shrink_without_unique_over<
     typename boost::mpl::unique<
       TypeVec
       ,boost::is_same<boost::mpl::_1,boost::mpl::_2>
