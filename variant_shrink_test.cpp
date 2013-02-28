@@ -41,27 +41,6 @@ int main()
   //v4=v4+v4;
 
 
-  ///test util
-    BOOST_MPL_ASSERT((is_less_type_over<int,double,default_type_order>));
-  //BOOST_MPL_ASSERT((is_less_type_over<double,int,default_type_order>));
-    BOOST_MPL_ASSERT((boost::is_same<greater_type_over::apply<int,double,default_type_order>::type,double> ));
-    BOOST_MPL_ASSERT((boost::is_same<greater_type_over::apply<double,int,default_type_order>::type,double> ));
-    BOOST_MPL_ASSERT((boost::is_same<greater_type_over::apply<float,short,default_type_order>::type,float> ));
-    BOOST_MPL_ASSERT((boost::is_same<max_type_over<boost::mpl::vector<double,float,int>::type,default_type_order   >::type , double>  ));
-
-
-  typedef mpl_vector_contains_filter<  
-    boost::mpl::vector<double,float,int>
-    ,boost::mpl::vector<double,float,char>
-    >::type ct1;
-  //BOOST_MPL_ASSERT((boost::is_same<ct1,boost::mpl::vector<double,float> >));
-  BOOST_MPL_ASSERT((boost::mpl::equal< ct1 , boost::mpl::vector<double,float> >));
-
-  typedef mpl_vector_not_contains_filter<  
-    boost::mpl::vector<double,float,int,char>
-    ,boost::mpl::vector<double,float>
-    >::type cnt1;
-  BOOST_MPL_ASSERT((boost::mpl::equal< cnt1 , boost::mpl::vector<int,char> >));
 
 
 
@@ -87,20 +66,47 @@ int main()
     
   
   typedef make_variant_shrink_over<
-    boost::mpl::vector<int,double> 
-    ,boost::mpl::vector<bool,char,std::string>  //your prefer order
+    boost::mpl::vector<char,std::string,double,int>
+    ,boost::mpl::vector<bool,char,int,std::string>  //your prefer order
     >::type r7type;
-  BOOST_MPL_ASSERT((boost::mpl::equal<r7type ,boost::variant<int,double> > )); 
+   BOOST_MPL_ASSERT((boost::mpl::equal<r7type ,boost::variant<std::string,double> > )); 
   
-  //r3type v3('a');
-  //v3="v3";
-  ////std::cout << v3<std::string > ;
-  //std::cout << v3 << std::endl;
-  //v3=false;
-  //std::cout << v3 << std::endl;
+  r7type v7("v777");
+  std::cout << v7 << std::endl;
+  v7=7.7777;
+  boost::get<double>(v7);
+  boost::get<int>(v7);
+  //std::cout << v7<double> << std::endl;
 
-  typedef make_variant_shrink_over<boost::mpl::vector<int,double,double,bool,char,char,std::string> >::type r8type;
-//BOOST_MPL_ASSERT((boost::mpl::equal<r4type ,boost::variant<double,bool,char,std::string> > )); 
+
+
+
+  /////////////////////////////////////util test//////////////////////
+    BOOST_MPL_ASSERT((is_less_type_over<int,double,default_type_order>));
+  //BOOST_MPL_ASSERT((is_less_type_over<double,int,default_type_order>));
+    BOOST_MPL_ASSERT((boost::is_same<greater_type_over::apply<int,double,default_type_order>::type,double> ));
+    BOOST_MPL_ASSERT((boost::is_same<greater_type_over::apply<double,int,default_type_order>::type,double> ));
+    BOOST_MPL_ASSERT((boost::is_same<greater_type_over::apply<float,short,default_type_order>::type,float> ));
+    BOOST_MPL_ASSERT((boost::is_same<max_type_over<boost::mpl::vector<double,float,int>::type,default_type_order   >::type , double>  ));
+
+
+  typedef mpl_vector_contains_filter<  
+    boost::mpl::vector<double,float,int>
+    ,boost::mpl::vector<double,float,char>
+    >::type ct1;
+  //BOOST_MPL_ASSERT((boost::is_same<ct1,boost::mpl::vector<double,float> >));
+  BOOST_MPL_ASSERT((boost::mpl::equal< ct1 , boost::mpl::vector<double,float> >));
+
+  typedef mpl_vector_not_contains_filter<  
+    boost::mpl::vector<double,float,int,char>
+    ,boost::mpl::vector<double,float>
+    >::type cnt1;
+  BOOST_MPL_ASSERT((boost::mpl::equal< cnt1 , boost::mpl::vector<int,char> >));
+
+
+  boost::variant<int,double> vari;
+  boost::get<int>(vari);
+  boost::get<bool>(vari);
 
 
 }
