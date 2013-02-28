@@ -58,13 +58,12 @@ For example, order:
 can be used 
 
     typedef make_variant_shrink_over<
-     boost::mpl::vector<float,bool,boost::rational<long> > 
-     ,
-     boost::mpl::vector<
+     boost::mpl::vector<float,bool,boost::rational<long> >
+     ,boost::mpl::vector<
          bool , int , long , boost::rational<int>  ,  boost::rational<long>
 	 >  //your prefer order
-
      >::type r8type;
+    
     BOOST_MPL_ASSERT((boost::mpl::equal<r8type ,boost::variant<boost::rational<long> ,float> > ));
 
 
@@ -74,6 +73,7 @@ can be used
          bool , int , long , boost::rational<int>  ,  boost::rational<long>  
 	 >  //your prefer order
      >::type r9type;
+    
     BOOST_MPL_ASSERT((boost::is_same<r9type ,boost::rational<int> > ));
 
 
