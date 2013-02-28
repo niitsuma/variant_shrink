@@ -64,18 +64,17 @@ can be used
          bool , int , long , boost::rational<int>  ,  boost::rational<long>
 	 >  //your prefer order
 
-     >::type r5type;
-    BOOST_MPL_ASSERT((boost::mpl::equal<r5type ,boost::variant<boost::rational<long> ,float> > ));
+     >::type r8type;
+    BOOST_MPL_ASSERT((boost::mpl::equal<r8type ,boost::variant<boost::rational<long> ,float> > ));
 
 
     typedef make_variant_shrink_over<
      boost::mpl::vector< int , boost::rational<int> >
      ,boost::mpl::vector<
-         bool , int , long , boost::rational<int>  ,  boost::rational<long>  //your prefer order
-	 >:  
-     >::type r6type;
-    BOOST_MPL_ASSERT((boost::is_same<r6type ,boost::rational<int> > ));
-
+         bool , int , long , boost::rational<int>  ,  boost::rational<long>  
+	 >  //your prefer order
+     >::type r9type;
+    BOOST_MPL_ASSERT((boost::is_same<r9type ,boost::rational<int> > ));
 
 
 # License
