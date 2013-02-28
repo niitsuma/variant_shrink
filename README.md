@@ -51,7 +51,7 @@
 # Advanced:
 
 You can use your prefer generalize type order.
-For example, 
+For example, order:
 
     bool < int < long < boost::rational<int>  <  boost::rational<long>
 
