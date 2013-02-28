@@ -50,26 +50,35 @@
 
 # Advanced:
 
-You can use your prefer type oder  
+You can use your prefer generalize type order.
+For example, 
+    bool < int < long < boost::rational<int>  <  boost::rational<long>
+can be used 
 
     typedef make_variant_shrink_over<
-     boost::mpl::vector<double,float,bool,char> 
-     ,boost::mpl::vector<bool,char,std::string>  //your prefer order
+     boost::mpl::vector<float,bool,boost::rational<long> > 
+     ,
+     boost::mpl::vector<
+         bool , int , long , boost::rational<int>  ,  boost::rational<long>
+	 >  //your prefer order
+
      >::type r5type;
-    BOOST_MPL_ASSERT((boost::mpl::equal<r5type ,boost::variant<char,double,float> > ));
+    BOOST_MPL_ASSERT((boost::mpl::equal<r5type ,boost::variant<boost::rational<long> ,float> > ));
 
 
     typedef make_variant_shrink_over<
-     boost::mpl::vector<char,int>::type
-     ,boost::mpl::vector<bool,char,int>::type  //your prefer order
+     boost::mpl::vector< int , boost::rational<int> >
+     ,boost::mpl::vector<
+         bool , int , long , boost::rational<int>  ,  boost::rational<long>  //your prefer order
+	 >:  
      >::type r6type;
-    BOOST_MPL_ASSERT((boost::is_same<r6type ,int > ));
+    BOOST_MPL_ASSERT((boost::is_same<r6type ,boost::rational<int> > ));
 
 
 
-# license
+# License
 
 Boost license
 
 
-© Copyright Hirotaka Niitsuma 2012-2013;
+© Copyright Hirotaka Niitsuma 2013;
