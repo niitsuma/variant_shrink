@@ -52,7 +52,9 @@
 
 You can use your prefer generalize type order.
 For example, 
+
     bool < int < long < boost::rational<int>  <  boost::rational<long>
+
 can be used 
 
     typedef make_variant_shrink_over<
