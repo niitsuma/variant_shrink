@@ -58,11 +58,12 @@ You can use your prefer type oder
      >::type r5type;
     BOOST_MPL_ASSERT((boost::mpl::equal<r5type ,boost::variant<char,double,float> > ));
 
-   typedef make_variant_shrink_over<
+
+    typedef make_variant_shrink_over<
      boost::mpl::vector<char,int>::type
      ,boost::mpl::vector<bool,char,int>::type  //your prefer order
      >::type r6type;
-   BOOST_MPL_ASSERT((boost::is_same<r6type ,int > ));
+    BOOST_MPL_ASSERT((boost::is_same<r6type ,int > ));
 
 
 
