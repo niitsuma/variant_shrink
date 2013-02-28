@@ -1,4 +1,13 @@
 #include "variant_shrink.hpp"
+
+
+struct do_double : boost::static_visitor<void>
+{
+	template<typename T>
+	  void operator()( T& t ) const { t = t + t; }
+};
+
+
 int main()
 {
   typedef make_variant_shrink_over<boost::mpl::vector<double,float,int,bool,char> >::type r1type;
@@ -6,8 +15,16 @@ int main()
   //BOOST_MPL_ASSERT((boost::is_same<r1type ,boost::variant<double,bool,char> > ));
   r1type val1(1.1);
   std::cout << val1 << std::endl;
+  std::cout << val1.which() << std::endl;
+
   val1='a';
   std::cout << val1 << std::endl;
+  std::cout << val1.which() << std::endl;
+
+  val1=false;
+  std::cout << val1 << std::endl;
+  std::cout << val1.which() << std::endl;
+
 
 
 
@@ -29,15 +46,30 @@ int main()
   v3=false;
   std::cout << v3 << std::endl;
 
-  typedef make_variant_shrink_over<boost::mpl::vector<int,double,double,bool,char,char,std::string> >::type r4type;
-  BOOST_MPL_ASSERT((boost::mpl::equal<r4type ,boost::variant<double,bool,char,std::string> > )); 
+  typedef make_variant_shrink_over<boost::mpl::vector<int,double,double,char,char,std::string> >::type r4type;
+  BOOST_MPL_ASSERT((boost::mpl::equal<r4type ,boost::variant<double,char,std::string> > )); 
   
   r4type v4("v4");
   std::cout << v4 << std::endl;
-  v4=false;
+  std::cout << v4.which() << std::endl;
+
+  //v4=false;
+  //std::cout << v4 << std::endl;
+  //std::cout << v4.which() << std::endl;
+
+  v4='4';
   std::cout << v4 << std::endl;
-  v4=1.11;
+  std::cout << v4.which() << std::endl;
+
+
+  v4=4.44;
   std::cout << v4 << std::endl;
+  std::cout << v4.which() << std::endl;
+
+  // v4=4;
+  // std::cout << v4 << std::endl;
+  // std::cout << v4.which() << std::endl;
+
   //v4=v4+v4;
 
 
@@ -73,9 +105,12 @@ int main()
   
   r7type v7("v777");
   std::cout << v7 << std::endl;
-  v7=7.7777;
-  boost::get<double>(v7);
-  boost::get<int>(v7);
+  std::cout << v7.which() << std::endl;
+
+  //assert( v7.which() == 0 );  
+  //v7=7.7777;
+  //boost::get<double>(v7);
+  //boost::get<int>(v7);
   //std::cout << v7<double> << std::endl;
 
 
@@ -104,9 +139,27 @@ int main()
   BOOST_MPL_ASSERT((boost::mpl::equal< cnt1 , boost::mpl::vector<int,char> >));
 
 
-  boost::variant<int,double> vari;
-  boost::get<int>(vari);
-  boost::get<bool>(vari);
+
+
+   
+  boost::variant<int,double,std::string> v;
+       boost::get<int>(v);
+       //boost::get<bool>(v);
+  
+
+
+        v = -2;
+	assert( v.which() == 0 );           
+        std::cout << boost::get<int>(v) <<  std::endl; 
+
+	v = 3.14;
+	assert( v.which() == 1 ); 
+	 std::cout << v <<  std::endl;        
+
+	v = "hoge";
+	assert( v.which() == 2 );        
+	//apply_visitor( do_double(), v ); 
+	std::cout << v <<  std::endl;
 
 
 }
