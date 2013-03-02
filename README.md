@@ -120,7 +120,7 @@ More complicate type order can use by defining `is_generalizable_to<T,BaseType> 
 
 `is_generalizable_to<float,double> ` => `mpl::true_ ` : `float ` can compare `double ` and `float ` can generailize to `double `
 
-`is_generalizable_to<long,float> ` => `mpl::false_ ` : `long ` can not compare `float ` or `long ` can not generailize to `float `
+`is_generalizable_to<std::string,float> ` => `mpl::false_ ` : `std::string ` can not compare `float ` or `std::string ` can not generailize to `float `
 
 
 
