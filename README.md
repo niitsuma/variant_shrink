@@ -102,6 +102,8 @@ More compilicate type order can use by defining `is_generalizable_to<T,BaseType>
          >::type
       >::type
     {};
+    
+    typedef boost::mpl::lambda<is_generalizable_to_custom<boost::mpl::_1 , boost::mpl::_2 > >::type is_generalizable_to_custom_mpl_lambda;
 
     typedef make_variant_shrink_over<
       boost::mpl::vector<double,float,bool,char> 
