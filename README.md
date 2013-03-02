@@ -50,7 +50,6 @@
 
 # Advanced:
 You can use your prefer type order.
-## using order sequence
 For example, order:
 
     bool < int < long < boost::rational<int>  <  boost::rational<long>
@@ -80,7 +79,7 @@ can be used
 
 ## define `is_generalizable_to ` :
 
-More compilicate type order can use by defining `is_generalizable_to<T,BaseType> `
+More complicate type order can use by defining `is_generalizable_to<T,BaseType> `
 
     template<typename T,typename TBase>
     struct is_generalizable_to_custom : public
@@ -116,6 +115,14 @@ More compilicate type order can use by defining `is_generalizable_to<T,BaseType>
 
     BOOST_MPL_ASSERT((boost::mpl::equal<r10type 
        ,boost::variant<double,char> >));
+
+### meaning `is_generalizable_to `:
+
+`is_generalizable_to<float,double> ` => `mpl::true_ ` : float can compare double and float can generailize to doubke
+
+`is_generalizable_to<long,float> ` => `mpl::false_ ` : long can not compare float or long can generailize to float
+
+
 
 
 # License
