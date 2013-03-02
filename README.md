@@ -62,7 +62,7 @@ can be used
       ,generate_mpl_lambda_is_generalizable_to_from_type_order_sequence<      
         boost::mpl::vector<
          bool , int , long , boost::rational<int>  ,  boost::rational<long>
-	 >  //your prefer order
+          >  //your prefer order
 	>::type
      >::type r8type;
     BOOST_MPL_ASSERT((boost::mpl::equal<r8type ,boost::variant<boost::rational<long> ,float> > ));
@@ -73,7 +73,7 @@ can be used
       ,generate_mpl_lambda_is_generalizable_to_from_type_order_sequence<      
         boost::mpl::vector<
          bool , int , long , boost::rational<int>  ,  boost::rational<long>  
-	 >  //your prefer order
+          >  //your prefer order
 	>::type
      >::type r9type;
     BOOST_MPL_ASSERT((boost::is_same<r9type ,boost::rational<int> > ));
