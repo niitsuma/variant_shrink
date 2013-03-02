@@ -80,7 +80,7 @@ can be used
 
 ## define `is_generalizable_to ` :
 
-More compilicate type order can define using `mpl::lambda `
+More compilicate type order can use defining `is_generalizable_to `
 
     template<typename T,typename TBase>
     struct is_generalizable_to_custom : public
@@ -97,10 +97,10 @@ More compilicate type order can define using `mpl::lambda `
 	           boost::is_integral<TBase>
       		   ,is_less_in_orderd_mpl_sequence<T,TBase,boost::mpl::vector<bool,char,short,int,long> >
       		   ,boost::mpl::false_
- 	     >::type
+              >::type
     	     ,boost::mpl::false_
- 	>::type
-     >::type
+         >::type
+      >::type
     {};
 
     typedef make_variant_shrink_over<
