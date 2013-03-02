@@ -80,7 +80,7 @@ can be used
 
 ## define `is_generalizable_to ` :
 
-More compilicate type order can use defining `is_generalizable_to `
+More compilicate type order can use by defining `is_generalizable_to<T,BaseType> `
 
     template<typename T,typename TBase>
     struct is_generalizable_to_custom : public
