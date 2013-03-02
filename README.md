@@ -49,8 +49,8 @@
 
 
 # Advanced:
-You can use your prefer generalizable type order.
-## generalizable type order sequence:
+You can use your prefer type order.
+## using order sequence
 For example, order:
 
     bool < int < long < boost::rational<int>  <  boost::rational<long>
