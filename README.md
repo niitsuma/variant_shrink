@@ -118,9 +118,9 @@ More complicate type order can use by defining `is_generalizable_to<T,BaseType> 
 
 ### meaning `is_generalizable_to `:
 
-`is_generalizable_to<float,double> ` => `mpl::true_ ` : float can compare double and float can generailize to doubke
+`is_generalizable_to<float,double> ` => `mpl::true_ ` : `float ` can compare `double ` and `float ` can generailize to `double `
 
-`is_generalizable_to<long,float> ` => `mpl::false_ ` : long can not compare float or long can generailize to float
+`is_generalizable_to<long,float> ` => `mpl::false_ ` : `long ` can not compare `float ` or `long ` can not generailize to `float `
 
 
 
