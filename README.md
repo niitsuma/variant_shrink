@@ -60,7 +60,7 @@ can be used
     typedef make_variant_shrink_over<
       boost::mpl::vector<float,bool,boost::rational<long> >       
       ,generate_mpl_lambda_is_generalizable_to_from_type_order_sequence<      
-	boost::mpl::vector<
+        boost::mpl::vector<
          bool , int , long , boost::rational<int>  ,  boost::rational<long>
 	 >  //your prefer order
 	>::type
@@ -71,7 +71,7 @@ can be used
     typedef make_variant_shrink_over<
       boost::mpl::vector< int , boost::rational<int> >
       ,generate_mpl_lambda_is_generalizable_to_from_type_order_sequence<      
-	boost::mpl::vector<
+        boost::mpl::vector<
          bool , int , long , boost::rational<int>  ,  boost::rational<long>  
 	 >  //your prefer order
 	>::type
