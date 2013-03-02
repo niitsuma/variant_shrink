@@ -49,8 +49,8 @@
 
 
 # Advanced:
-
-You can use your prefer generalize type order.
+You can use your prefer generalizable type order.
+## generalizable type order sequence:
 For example, order:
 
     bool < int < long < boost::rational<int>  <  boost::rational<long>
@@ -58,23 +58,57 @@ For example, order:
 can be used 
 
     typedef make_variant_shrink_over<
-     boost::mpl::vector<float,bool,boost::rational<long> >
-     ,boost::mpl::vector<
+      boost::mpl::vector<float,bool,boost::rational<long> >       
+      ,generate_mpl_lambda_is_generalizable_to_from_type_order_sequence<      
+	boost::mpl::vector<
          bool , int , long , boost::rational<int>  ,  boost::rational<long>
 	 >  //your prefer order
+	>::type
      >::type r8type;
-    
     BOOST_MPL_ASSERT((boost::mpl::equal<r8type ,boost::variant<boost::rational<long> ,float> > ));
 
 
     typedef make_variant_shrink_over<
-     boost::mpl::vector< int , boost::rational<int> >
-     ,boost::mpl::vector<
+      boost::mpl::vector< int , boost::rational<int> >
+      ,generate_mpl_lambda_is_generalizable_to_from_type_order_sequence<      
+	boost::mpl::vector<
          bool , int , long , boost::rational<int>  ,  boost::rational<long>  
 	 >  //your prefer order
+	>::type
      >::type r9type;
-    
     BOOST_MPL_ASSERT((boost::is_same<r9type ,boost::rational<int> > ));
+
+## define `is_generalizable_to ` :
+
+More compilicate type order can define using `mpl::lambda `
+
+    template<typename T,typename TBase>
+    struct is_generalizable_to_custom : public
+    boost::mpl::if_<
+      boost::is_floating_point<T>
+      , typename boost::mpl::if_< 
+         boost::is_floating_point<TBase>
+    	 ,is_less_in_orderd_mpl_sequence<T,TBase,boost::mpl::vector<float,double,long double > >
+    	 ,boost::mpl::false_
+    	 >::type
+	 ,typename boost::mpl::if_<
+	     boost::is_integral<T>
+    	     ,typename boost::mpl::if_<
+	           boost::is_integral<TBase>
+      		   ,is_less_in_orderd_mpl_sequence<T,TBase,boost::mpl::vector<bool,char,short,int,long> >
+      		   ,boost::mpl::false_
+ 	     >::type
+    	     ,boost::mpl::false_
+ 	>::type
+     >::type
+    {};
+
+    typedef make_variant_shrink_over<
+      boost::mpl::vector<double,float,bool,char> 
+      ,is_generalizable_to_custom_mpl_lambda
+    >::type r10type;
+
+    BOOST_MPL_ASSERT((boost::mpl::equal<r10type ,boost::variant<double,char> >));
 
 
 # License

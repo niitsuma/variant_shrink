@@ -13,6 +13,7 @@ OBJS		= $(SRCS:.c=.o)
 
 PROGRAM		= variant_shrink_test.exe example.exe
 #PROGRAM		= unit_test.exe
+#PROGRAM		= test.exe
 
 
 .PHONY: all
