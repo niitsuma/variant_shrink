@@ -88,14 +88,16 @@ More compilicate type order can use by defining `is_generalizable_to<T,BaseType>
       boost::is_floating_point<T>
       , typename boost::mpl::if_< 
          boost::is_floating_point<TBase>
-    	 ,is_less_in_orderd_mpl_sequence<T,TBase,boost::mpl::vector<float,double,long double > >
+    	 ,is_less_in_orderd_mpl_sequence<
+              T,TBase,boost::mpl::vector<float,double,long double > >
     	 ,boost::mpl::false_
     	 >::type
 	 ,typename boost::mpl::if_<
 	     boost::is_integral<T>
     	     ,typename boost::mpl::if_<
 	           boost::is_integral<TBase>
-      		   ,is_less_in_orderd_mpl_sequence<T,TBase,boost::mpl::vector<bool,char,short,int,long> >
+      		   ,is_less_in_orderd_mpl_sequence<
+               T,TBase,boost::mpl::vector<bool,char,short,int,long> >
       		   ,boost::mpl::false_
               >::type
     	     ,boost::mpl::false_
@@ -103,14 +105,17 @@ More compilicate type order can use by defining `is_generalizable_to<T,BaseType>
       >::type
     {};
     
-    typedef boost::mpl::lambda<is_generalizable_to_custom<boost::mpl::_1 , boost::mpl::_2 > >::type is_generalizable_to_custom_mpl_lambda;
+    typedef boost::mpl::lambda<is_generalizable_to_custom<
+        boost::mpl::_1 , boost::mpl::_2 > >::type 
+           is_generalizable_to_custom_mpl_lambda;
 
     typedef make_variant_shrink_over<
       boost::mpl::vector<double,float,bool,char> 
       ,is_generalizable_to_custom_mpl_lambda
     >::type r10type;
 
-    BOOST_MPL_ASSERT((boost::mpl::equal<r10type ,boost::variant<double,char> >));
+    BOOST_MPL_ASSERT((boost::mpl::equal<r10type 
+       ,boost::variant<double,char> >));
 
 
 # License
