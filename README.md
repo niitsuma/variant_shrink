@@ -79,7 +79,21 @@ can be used
 
 ## define `is_generalizable_to ` :
 
-More complicate type order can use by defining `is_generalizable_to<T,BaseType> `
+More complicate type order can use by defining `is_generalizable_to<T,BaseType> ` .
+For example:
+
+float order:
+
+    float < double < long < double
+
+int order:
+
+    bool < char < short < int <  long  
+
+And no relation between float and int orders.
+Such relation can be used by defining following `is_generalizable_to ` function object:
+
+
 
     template<typename T,typename TBase>
     struct is_generalizable_to_custom : public
@@ -88,19 +102,19 @@ More complicate type order can use by defining `is_generalizable_to<T,BaseType> 
       , typename boost::mpl::if_< 
          boost::is_floating_point<TBase>
     	 ,is_less_in_orderd_mpl_sequence<
-              T,TBase,boost::mpl::vector<float,double,long double > >
-    	 ,boost::mpl::false_
+              T,TBase,boost::mpl::vector<float,double,long double > >  //float order
+    	 ,boost::mpl::false_ //no relation between float and int
     	 >::type
 	 ,typename boost::mpl::if_<
 	     boost::is_integral<T>
     	     ,typename boost::mpl::if_<
 	           boost::is_integral<TBase>
       		   ,is_less_in_orderd_mpl_sequence<
-               T,TBase,boost::mpl::vector<bool,char,short,int,long> >
+               T,TBase,boost::mpl::vector<bool,char,short,int,long> > //in order
       		   ,boost::mpl::false_
               >::type
-    	     ,boost::mpl::false_
-         >::type
+    	     ,boost::mpl::false_  //no change other types
+         >::type 
       >::type
     {};
     
