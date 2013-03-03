@@ -79,7 +79,7 @@ can be used
 
 ## define `is_generalizable_to ` :
 
-More complicate type order can use by defining `is_generalizable_to<T,BaseType> ` .
+More complicate type order can use by defining `is_generalizable_to<TypeFrom,TypeTo> ` .
 For example:
 
 float order:
