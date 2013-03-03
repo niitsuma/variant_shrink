@@ -95,9 +95,7 @@ struct mpl_sequence_if_single_then_element_else_variant : public
   typedef boost::mpl::lambda<is_less_in_orderd_mpl_sequence<boost::mpl::_1 , boost::mpl::_2 , default_type_order> >::type is_less_over_default_type_order_mpl_lambda;
 
 
-  //shrinkable
- //generalizable
-   template<typename T1,typename TBase,typename TypeOrder>
+  template<typename T1,typename TBase,typename TypeOrder>
    struct is_generalizable_to_using_generaize_order_sequence :
      boost::mpl::if_<
      typename 
