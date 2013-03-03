@@ -124,7 +124,7 @@ Such relation can be used by defining following `is_generalizable_to ` function 
 
     typedef make_variant_shrink_over<
       boost::mpl::vector<double,float,bool,char> 
-      ,is_generalizable_to_custom_mpl_lambda
+      ,is_generalizable_to_custom_mpl_lambda //input your custum order inforamtion as 2nd arg
     >::type r10type;
 
     BOOST_MPL_ASSERT((boost::mpl::equal<r10type 
