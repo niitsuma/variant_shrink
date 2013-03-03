@@ -84,7 +84,7 @@ For example:
 
 float order:
 
-    float < double < long < double
+    float < double < long double
 
 int order:
 
