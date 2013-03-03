@@ -132,7 +132,7 @@ Such relation can be used by defining following `is_generalizable_to ` function 
 
 ### meaning `is_generalizable_to `:
 
-`is_generalizable_to<float,double> ` => `mpl::true_ ` : `float ` can compare `double ` and `float ` can generailize to `double `
+`is_generalizable_to<float,double> ` => `mpl::true_ ` : `float ` can generailize to `double `
 
 `is_generalizable_to<std::string,float> ` => `mpl::false_ ` : `std::string ` can not compare `float ` or `std::string ` can not generailize to `float `
 
