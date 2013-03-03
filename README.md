@@ -103,14 +103,14 @@ Such relation can be used by defining following `is_generalizable_to ` function 
          boost::is_floating_point<TBase>
     	 ,is_less_in_orderd_mpl_sequence<
               T,TBase,boost::mpl::vector<float,double,long double > >  //float order
-    	 ,boost::mpl::false_ //no relation between float and int
+    	 ,boost::mpl::false_                      //no relation between float and int
     	 >::type
 	 ,typename boost::mpl::if_<
 	     boost::is_integral<T>
     	     ,typename boost::mpl::if_<
 	           boost::is_integral<TBase>
       		   ,is_less_in_orderd_mpl_sequence<
-               T,TBase,boost::mpl::vector<bool,char,short,int,long> > //in order
+               T,TBase,boost::mpl::vector<bool,char,short,int,long> > //int order
       		   ,boost::mpl::false_
               >::type
     	     ,boost::mpl::false_  //no change other types
