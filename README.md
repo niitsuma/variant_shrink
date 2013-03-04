@@ -17,6 +17,8 @@
 
 # Usage:
 
+just ` #include "variant_shrink.hpp" `  then
+
 `make_variant_shrink_over<boost::mpl::vector<int,int> >::type`  
 => `int` 
 
