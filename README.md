@@ -1,4 +1,4 @@
-`boost::variant` should be
+`boost::variant` should reduce
 
 `variant<int,int> `  
 => `int`
